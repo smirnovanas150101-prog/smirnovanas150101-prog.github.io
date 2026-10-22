@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Анастасия Зайкина</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Анастасия Зайкина — графический дизайнер. Айдентика, рекламные визуалы и digital-проекты. Портфолио в формате интерактивного рабочего стола DESKTOP 001.">
+<meta name="theme-color" content="#F3F0E9">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Анастасия Зайкина — Graphic Designer">
+<meta property="og:description" content="Идеи обретают форму. Портфолио графического дизайнера: айдентика, рекламные визуалы, digital.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%23F3F0E9'/%3E%3Cpath d='M6 10h8l2 2h10v12H6z' fill='none' stroke='%23171715' stroke-width='1.6'/%3E%3Ccircle cx='23' cy='8' r='3' fill='%23C5F266' stroke='%23171715' stroke-width='1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/site.css">
+
+</head>
+<body>
+<a class="skip" href="#desktop">Перейти к рабочему столу</a>
+
+<header class="topbar" id="topbar">
+  <div class="topbar__id">
+    <button class="topbar__name" type="button" data-action="home" data-cursor="HOME">Анастасия Зайкина</button>
+    <span class="mono topbar__role">Graphic Designer</span>
+  </div>
+  <div class="topbar__space mono" aria-live="polite">
+    <span class="topbar__project">DESKTOP 001</span>
+    <span class="topbar__slash">/</span>
+    <span id="space-label">desktop</span>
+  </div>
+  <nav class="topbar__nav" aria-label="Основная навигация">
+    <button type="button" class="navlink" data-open="branding">Работы</button>
+    <button type="button" class="navlink" data-open="about">About</button>
+    <button type="button" class="navlink" data-open="contact">Контакт</button>
+  </nav>
+  <div class="topbar__status mono" aria-hidden="true">
+    <span class="status-dot"></span><span class="status-text">IN PROGRESS</span>
+    <span class="clock" id="clock">--:--</span>
+  </div>
+</header>
+
+<main class="desk" id="desk">
+  <section class="desktop" id="desktop" aria-label="Рабочий стол">
+    <div class="desktop__grid" aria-hidden="true"></div>
+
+    <div class="hero">
+      <p class="mono eyebrow intro-item" style="--i:0">A MIND IN PROGRESS</p>
+      <h1 class="hero__title intro-item" style="--i:1">
+        <span class="hero__line">Идеи обретают</span>
+        <em class="hero__line hero__accent">форму</em>
+      </h1>
+      <p class="hero__lead intro-item" style="--i:2" id="hero-lead"></p>
+    </div>
+
+    <div class="orb-wrap intro-item" style="--i:2" aria-hidden="true">
+      <div class="orb" id="orb"><div class="orb__ring"></div></div>
+      <span class="mono orb__caption">OBJ_01 · CHROME FORM</span>
+    </div>
+
+    <div class="folders" id="folders" aria-label="Папки с работами"></div>
+    <div class="docs" id="docs" aria-label="Документы"></div>
+
+    <p class="mono hint intro-item" style="--i:7" id="hint">Откройте папку — окна можно перетаскивать за верхнюю панель</p>
+  </section>
+
+  <div class="windows" id="windows"></div>
+</main>
+
+<footer class="dock" id="dock">
+  <span class="mono dock__copy">© 2026 · А. Зайкина</span>
+  <div class="dock__tasks" id="tasks" aria-label="Открытые окна"></div>
+  <div class="dock__links">
+    <button type="button" class="mono dock__link" data-open="readme">README</button>
+    <button type="button" class="mono dock__link" data-open="privacy">Конфиденциальность</button>
+  </div>
+</footer>
+
+<nav class="mobile-bar" aria-label="Быстрая навигация">
+  <button type="button" data-action="works"><span class="mono">01–03</span>Работы</button>
+  <button type="button" data-open="about"><span class="mono">TXT</span>About</button>
+  <button type="button" data-open="contact"><span class="mono">CARD</span>Контакт</button>
+</nav>
+
+<div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label mono"></span></div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения" hidden>
+  <div class="lightbox__bar mono">
+    <span id="lb-count"></span>
+    <span class="lightbox__title" id="lb-title"></span>
+    <button type="button" class="lb-btn" id="lb-close" aria-label="Закрыть просмотр">Закрыть ✕</button>
+  </div>
+  <figure class="lightbox__stage">
+    <img id="lb-img" alt="">
+  </figure>
+  <button type="button" class="lb-nav lb-nav--prev" id="lb-prev" aria-label="Предыдущее изображение">←</button>
+  <button type="button" class="lb-nav lb-nav--next" id="lb-next" aria-label="Следующее изображение">→</button>
+</div>
+
+<noscript><p class="noscript">Для работы рабочего стола нужен JavaScript.</p></noscript>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
