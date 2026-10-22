@@ -48,7 +48,7 @@
        links    — [{ label: 'Behance', url: 'https://www.behance.net/...' }]  */
     contacts: {
       email: '',
-      telegram: '',
+      telegram: 'https://t.me/anastasiaS1501',
       links: [],
     },
   };
