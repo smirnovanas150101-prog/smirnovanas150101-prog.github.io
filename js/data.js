@@ -89,6 +89,7 @@
       category: 'branding',
       kind: 'Брендбук и фирменный стиль',
       year: '2026',
+      deck: { href: 'assets/decks/novaderm-brandbook.pdf', label: 'Брендбук «Новадерм» 2026 · 16 стр.' },
       cover: nov[14],
       description:
         'Брендбук центра эстетической медицины «Новадерм»: бренд-платформа, логотип, фирменные цвета, шрифт и носители.',
@@ -604,6 +605,7 @@
       category: 'digital',
       kind: 'Презентация',
       year: '2026',
+      deck: { href: 'assets/decks/ergo-portfolio.pdf', label: 'Портфолио Ergo Solutions · 13 стр.' },
       cover: ergo[0],
       description:
         'Презентация-портфолио студии Ergo Solutions: обложка, раздел о компании, десять кейсов и контакты. 13 слайдов 16:9.',

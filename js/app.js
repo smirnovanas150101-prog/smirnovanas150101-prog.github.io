@@ -2,7 +2,7 @@
    DESKTOP 001 — логика рабочего стола.
    Модули: Util · Navigation · Desktop/Folder · WindowManager/Window ·
    ProjectExplorer/ProjectCard · ProjectCase · AboutWindow · ContactWindow ·
-   Lightbox · Cursor · Orb · Router.  Без зависимостей.
+   Lightbox · Cursor · Router.  Без зависимостей.
    ========================================================================== */
 (() => {
   'use strict';
@@ -565,6 +565,15 @@
         </div>
       </section>` : '';
 
+    const deck = p.deck ? `
+      <section class="live reveal" aria-label="Презентация">
+        <div class="live__bar mono">
+          <span class="status-dot"></span><span class="grow">PDF · ${esc(p.deck.label)}</span>
+          <a href="${esc(p.deck.href)}" target="_blank" rel="noopener">Открыть ↗</a>
+          <a href="${esc(p.deck.href)}" download>Скачать</a>
+        </div>
+      </section>` : '';
+
     const node = el(`
       <article class="case">
         <div class="case__cover ${coverPortrait ? 'is-contain' : ''}">${imgTag(p.cover, { eager: true })}</div>
@@ -583,6 +592,7 @@
             <div class="swatch" style="--c:${esc(s.hex)}"><span class="swatch__chip"></span>
               <span class="swatch__txt"><span class="mono">${esc(s.hex)}</span>${esc(s.name)}</span></div>`).join('')}</div>` : ''}
           ${live}
+          ${deck}
           <div class="gallery">${rows}</div>
           ${p.note ? `<p class="case__note"><span class="mono">NOTE</span><span>${esc(p.note)}</span></p>` : ''}
           ${p.externalUrl ? `<a class="case__ext" href="${esc(p.externalUrl)}" target="_blank" rel="noopener">Открыть проект ↗</a>` : ''}
@@ -832,28 +842,6 @@
     },
   };
 
-  /* ================= Orb (металлическая форма, реагирует на курсор) ================= */
-  const Orb = {
-    init() {
-      const orb = $('#orb');
-      if (!orb || reduced()) return;
-      let cx = 0, cy = 0, tx = 0, ty = 0, raf = 0;
-      const loop = () => {
-        cx += (tx - cx) * 0.06; cy += (ty - cy) * 0.06;
-        orb.style.setProperty('--hx', `${34 + cx * 18}%`);
-        orb.style.setProperty('--hy', `${28 + cy * 16}%`);
-        orb.style.translate = `${cx * 10}px ${cy * 8}px`;
-        raf = Math.abs(tx - cx) + Math.abs(ty - cy) > 0.002 ? requestAnimationFrame(loop) : 0;
-      };
-      addEventListener('pointermove', (e) => {
-        if (document.body.classList.contains('is-paused') || isMobile()) return;
-        tx = (e.clientX / innerWidth) * 2 - 1;
-        ty = (e.clientY / innerHeight) * 2 - 1;
-        if (!raf) raf = requestAnimationFrame(loop);
-      }, { passive: true });
-    },
-  };
-
   /* ================= Router (hash: #branding, #novaderm, #about …) ================= */
   const Router = {
     replace(token) {
@@ -933,7 +921,6 @@
   Desktop.render();
   Lightbox.init();
   Cursor.init();
-  Orb.init();
   clock();
   bindGlobal();
   intro();
